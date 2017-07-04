@@ -23,13 +23,13 @@ var conversationWorkspace, conversation;
 // Create the service wrapper
     conversation = watson.conversation({
         url: "https://gateway.watsonplatform.net/conversation/api"
-        , username: "<username>"
-        , password: "<password>"
+        , username: "d1df6c26-bedc-4965-9a79-e1339c0cff80"
+        , password: "3lUqPxo4kNm2"
         , version_date: '2017-04-10'
         , version: 'v1'
     });
     // check if the workspace ID is specified in the environment
-    conversationWorkspace = "<workspace_id>";
+    conversationWorkspace = "a28954bd-d4c0-4a1d-8d8c-e980ed72d812";
     // if not, look it up by name or create one
 // Allow clients to interact
 
