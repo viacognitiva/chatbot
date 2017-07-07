@@ -192,6 +192,7 @@ body {
 
 .chat-popup .chat-body .bubble.user {
     //color: #1a1a1a;
+
     align-self: flex-end;
    // background-color: #eceff1;
     margin-right: 20px;
