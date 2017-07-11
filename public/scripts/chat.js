@@ -92,7 +92,7 @@ function userMessage(message) {
 
 
 function callCloudantById( callback ,id){
-    $.getJSON( "http://localhost:9000/api/cloudant/"+id, function( data ) {
+    $.getJSON( "http://localhost:3000/api/cloudant/"+id, function( data ) {
       callback(data.resposta);
     });
 }
