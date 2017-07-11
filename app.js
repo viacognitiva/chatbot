@@ -11,6 +11,8 @@ var cfenv = require('cfenv');
 
 var chatbot = require('./config/bot.js');
 
+var cloudant = require('./config/cloudant.js');
+
 
 var app = express();
 
@@ -51,6 +53,11 @@ app.post('/api/watson', function (req, res) {
     processChatMessage(req, res);
 }); // End app.post 'api/watson'
 
+//http://localhost:9000/api/cloudant/viacognitiva
+app.get('/api/cloudant/:id', function (req, res) {
+    cloudant.get(req, res);
+});
+
 function processChatMessage(req, res) {
     chatbot.sendMessage(req, function (err, data) {
         if (err) {
@@ -77,11 +84,11 @@ function processChatMessage(req, res) {
 //                }
 //            });
             var context = data.context;
-//            var owner = req.user.username;
             res.status(200).json(data);
         }
     });
 }
+
 
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
     console.log('Express server listening on port ' + app.get('port'));
