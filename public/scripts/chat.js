@@ -45,7 +45,6 @@ var params = {},
     context;
 
 function userMessage(message) {
-    
     params.text = message;
     if (context) {
         params.context = context;    
@@ -61,10 +60,21 @@ function userMessage(message) {
             text = response.output.text; // Only display the first response
             context = response.context; // Store the context for next round of questions
             console.log("Got response from Watson: ", JSON.stringify(response));
-           
-            for (var txt in text) {
-                displayMessage(text[txt], watson);
-            }
+
+          if(text.toString().length==0){
+             callCloudantById( function ( value ) {
+                 console.log( 'response'+response );
+                 text = value;
+                 displayMessage(text, watson);
+
+               },response.intents[0].intent );
+
+          }else {
+               for (var txt in text) {
+                    displayMessage(text[txt], watson);
+                 }
+          }
+
 
         }
         else {
@@ -78,6 +88,13 @@ function userMessage(message) {
     };
     console.log(JSON.stringify(params));
     xhr.send(JSON.stringify(params));
+}
+
+
+function callCloudantById( callback ,id){
+    $.getJSON( "http://localhost:9000/api/cloudant/"+id, function( data ) {
+      callback(data.resposta);
+    });
 }
 
 function newEvent(event) {
