@@ -1,9 +1,12 @@
 
 //const queryBuilder = require('./config/query-builder');
 
-var DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
+
 var request=require('request');
 
+/*
+
+var DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
 var discovery = new DiscoveryV1({
   username: '031295b2-eaf4-4bea-af38-897ac00f665a',
   password: 'wN3LgnWp6gd1',
@@ -27,7 +30,7 @@ const sentiments = [
 const mentions = [
   // eslint-disable-next-line
   'filter(enrichedTitle.entities.type::Company).term(enrichedTitle.entities.text).timeslice(blekko.chrondate,1day).term(docSentiment.type)'
-];
+];*/
 
 
 
@@ -37,7 +40,10 @@ const mentions = [
      get : function(req, res) {
         var texto = req.params.texto;
         console.log("paramentros"+req.params.full);
-        var full=JSON.parse(req.params.full);
+
+        if(typeof req.params.full == 'undefined'){
+          full=false;
+        }else full=JSON.parse(req.params.full);
 
         console.log("Buscando palavra "+texto);
 

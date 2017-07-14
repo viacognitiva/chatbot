@@ -1,3 +1,11 @@
+declared-services:
+  my-discovery:
+    label: discovery
+    plan: free
+declared-services:
+  viacognitiva-cloudantNoSQLDB:
+    label: cloudantNoSQLDB
+    plan:  Lite
 applications:
 - path: .
   memory: 512M
@@ -6,3 +14,6 @@ applications:
   name: chatbotvbo
   host: chatbotvbo${random-word}
   disk_quota: 512M
+services:
+      - Discovery-86
+      - viacognitiva-cloudantNoSQLDB
