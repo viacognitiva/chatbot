@@ -8,5 +8,8 @@ module.exports = {
     },
     chat : function(req,res){
         res.render('chat.html');
+    },
+    discovery : function(req,res){
+            res.render('discovery.html');
     }
 }

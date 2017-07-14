@@ -13,6 +13,8 @@ var chatbot = require('./config/bot.js');
 
 var cloudant = require('./config/cloudant.js');
 
+var discovery = require('./config/discovery.js');
+
 
 var app = express();
 
@@ -45,6 +47,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.chat);
+//app.get('/', routes.discovery);
+app.get('/discovery', routes.discovery);
+
 
 // =====================================
 // WATSON CONVERSATION FOR ANA =========
@@ -56,6 +61,10 @@ app.post('/api/watson', function (req, res) {
 //http://localhost:9000/api/cloudant/viacognitiva
 app.get('/api/cloudant/:id', function (req, res) {
     cloudant.get(req, res);
+});
+
+app.get('/api/discovery/:texto/:full', function (req, res) {
+    discovery.get(req, res);
 });
 
 function processChatMessage(req, res) {
