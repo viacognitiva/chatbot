@@ -47,13 +47,13 @@ const mentions = [
 
         console.log("Buscando palavra "+texto);
 
-        const environmentId = process.env.DISCOVERY_ENVIRONMENT || 'c5bd48f5-619e-4a74-9c84-ed9681f3a336';
-        const collectionId = process.env.DISCOVERY_COLLECTION || '76764baf-0b3d-4bf0-87ba-74ad78d22eb9';
+        const environmentId = process.env.DISCOVERY_ENVIRONMENT || 'c3e2bd90-5ded-4d01-9ff0-46cc457aec29';
+        const collectionId = process.env.DISCOVERY_COLLECTION || '7a132e97-a463-4bf4-9500-da29d2783fbd';
         const baseQuery = `/discovery/api/v1/environments/${environmentId}/collections/${collectionId}/query`;
         const version = 'version=2016-11-09';
 
-        const username = process.env.DISCOVERY_USERNAME || '031295b2-eaf4-4bea-af38-897ac00f665a';
-        const password = process.env.DISCOVERY_PASSWORD || 'wN3LgnWp6gd1';
+        const username = process.env.DISCOVERY_USERNAME || 'c28e96ae-c74d-421a-be65-dad4dadffc4f';
+        const password = process.env.DISCOVERY_PASSWORD || 'a88x8YMEAN0j';
         const apiHostname = process.env.DISCOVERY_HOST || 'gateway.watsonplatform.net';
         var passages = '';
         if(full){
