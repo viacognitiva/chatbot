@@ -11,5 +11,8 @@ module.exports = {
     },
     discovery : function(req,res){
             res.render('discovery.html');
+    },
+    nlu : function(req,res){
+            res.render('nlu.html');
     }
 }

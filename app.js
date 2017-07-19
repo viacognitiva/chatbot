@@ -15,6 +15,8 @@ var cloudant = require('./config/cloudant.js');
 
 var discovery = require('./config/discovery.js');
 
+var nlu = require('./config/nlu.js');
+
 
 var app = express();
 
@@ -50,6 +52,8 @@ app.get('/', routes.chat);
 //app.get('/', routes.discovery);
 app.get('/discovery', routes.discovery);
 
+app.get('/nlu', routes.nlu);
+
 
 // =====================================
 // WATSON CONVERSATION FOR ANA =========
@@ -65,6 +69,11 @@ app.get('/api/cloudant/:id', function (req, res) {
 
 app.get('/api/discovery/:texto/:full', function (req, res) {
     discovery.get(req, res);
+});
+
+app.get('/api/nlu/:texto/:url', function (req, res) {
+   nlu.analisar(req, res);
+
 });
 
 function processChatMessage(req, res) {

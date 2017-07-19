@@ -18,7 +18,17 @@ app.controller('myController', function($scope, $http) {
 
                   angular.forEach(data.passages, function(item){
                         console.log('passage '+item.passage_text);
-                        retorno.push({texto: item.passage_text});
+                        console.log('id '+item.document_id);
+                       // retorno.push({texto: item.passage_text});
+
+                        angular.forEach(data.results, function(item1){
+                                                        console.log('id '+item.document_id +""+item1.id);
+                                                      if(item1.id==item.document_id){
+                                                          retorno.push({texto: item.passage_text, file:item1.extracted_metadata.filename});
+                                                      }
+
+                                                    });
+
                   });
 
                    $scope.outputDiv = retorno;
