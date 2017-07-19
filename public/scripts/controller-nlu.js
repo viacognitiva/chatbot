@@ -5,6 +5,7 @@ app.controller('myController', function($scope, $http) {
       $scope.outputTabela=[];
       $scope.outputDiv=[];
       $scope.outputEntidade=[];
+      $scope.outputConceito=[];
 
       $scope.buscar = function() {
 
@@ -21,6 +22,7 @@ app.controller('myController', function($scope, $http) {
 
                var retorno = [];
                var retornoEntidade = [];
+               var retornoConceito = [];
                 console.log('$scope.passages'+data);
 
                   angular.forEach(data.keywords, function(item){
@@ -37,6 +39,11 @@ app.controller('myController', function($scope, $http) {
                                             // retorno.push({texto: item.passage_text, file:item1.extracted_metadata.filename});
                   });
 
+                   angular.forEach(data.concepts, function(item){
+                       console.log('keywords '+item.text);
+                       retornoConceito.push({nome: item.text,relevancia:(item.relevance*100).toFixed(2)});
+                   });
+
                 if(retorno.length==0){
                   $scope.errorMessage='Registro não encontrado.';
                 } else {
@@ -45,6 +52,7 @@ app.controller('myController', function($scope, $http) {
 
                  $scope.outputDiv = retorno;
                  $scope.outputEntidade=retornoEntidade;
+                 $scope.outputConceito=retornoConceito;
 
 
              });

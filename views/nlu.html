@@ -63,7 +63,7 @@
                             <ul class="nav nav-pills">
                                 <li class="active"><a href="#tab1" data-toggle="tab">Palavra Chave</a></li>
                                 <li><a href="#tab2" data-toggle="tab">Entidade</a></li>
-                                <li><a href="#tab3" data-toggle="tab">Emoção</a></li>
+                                <li><a href="#tab3" data-toggle="tab">Conceito</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab1">
@@ -117,8 +117,27 @@
                                 </div>
 
                                 <div class="tab-pane" id="tab3">
-                                    <p>
-                                        EMOÇÃO</p>
+                                    <p><div class="box" ng-show="outputConceito.length">
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <table class="table table-bordered">
+                                            <tbody><tr>
+                                                <th style="width: 10px">Nome</th>
+                                                <th>Relevancia</th>
+                                            </tr>
+                                            <tr ng-repeat="item in outputConceito">
+                                                <td>{{item.nome}}</td>
+                                                <td>
+                                                    <div class="progress progress-xs">
+                                                        <div class="progress-bar progress-bar-danger" style="width: {{item.relevancia}}%"></div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-red">{{item.relevancia}}%</span></td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+
+                                </div></p>
                                 </div>
                             </div>
                         </div>

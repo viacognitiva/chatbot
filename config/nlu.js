@@ -28,7 +28,9 @@ var natural_language_understanding = new NaturalLanguageUnderstandingV1({
                        'emotion': true,
                        'sentiment': true,
                        'limit': 6
-                     }
+                     },
+                     'emotion': {'limit': 6},
+                     'concepts': {'limit': 6}
                    }
             }
        }
@@ -45,7 +47,9 @@ var natural_language_understanding = new NaturalLanguageUnderstandingV1({
                       'emotion': true,
                       'sentiment': true,
                       'limit': 6
-                    }
+                    },
+                    'emotion': {'limit': 6},
+                    'concepts': {'limit': 6}
                   }
                 }
        }
