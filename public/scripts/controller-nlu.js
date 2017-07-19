@@ -7,7 +7,15 @@ app.controller('myController', function($scope, $http) {
       $scope.outputEntidade=[];
 
       $scope.buscar = function() {
-     // $scope.passages=false;
+
+            if(angular.isUndefined($scope.url) && angular.isUndefined($scope.texto)  ){
+                $scope.requiredURL = true;
+                $scope.requiredTexto = true;
+                return;
+            }else {
+               $scope.requiredURL = false;
+                $scope.requiredTexto = false;
+            }
 
             $http.get('/api/nlu/'+$scope.texto+'/'+$scope.url).success(function(data) {
 
