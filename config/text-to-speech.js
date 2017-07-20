@@ -1,14 +1,10 @@
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var fs = require('fs');
 
-var play = require('play');
-
 var text_to_speech = new TextToSpeechV1({
   username: '4613a7c0-8e3c-48eb-900f-e54773a940d7',
   password: 'T4JycjDnnPuS'
 });
-
-
 
 /*text_to_speech.voice(params, function(error, voice) {
            if (error)
@@ -71,7 +67,3 @@ var textToSpeechWatson = {
 
 module.exports = textToSpeechWatson;
 
-/*module.exports = {
-   textToSpeechWatson,
-   textToSpeechWatsonRead
-}*/
