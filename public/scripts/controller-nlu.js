@@ -44,7 +44,7 @@ app.controller('myController', function($scope, $http) {
                        retornoConceito.push({nome: item.text,relevancia:(item.relevance*100).toFixed(2)});
                    });
 
-                if(retorno.length==0){
+                if(retorno.length==0 && retornoEntidade==0 && retornoConceito==0 ){
                   $scope.errorMessage='Registro não encontrado.';
                 } else {
                    $scope.errorMessage='';
