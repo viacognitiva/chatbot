@@ -14,5 +14,9 @@ module.exports = {
     },
     nlu : function(req,res){
             res.render('nlu.html');
-    }
+    },
+    textToSpeech : function(req,res){
+                res.render('sound.html');
+     }
 }
+

@@ -17,6 +17,8 @@ var discovery = require('./config/discovery.js');
 
 var nlu = require('./config/nlu.js');
 
+var textToSpeech = require('./config/text-to-speech.js');
+
 
 var app = express();
 
@@ -54,6 +56,8 @@ app.get('/discovery', routes.discovery);
 
 app.get('/nlu', routes.nlu);
 
+app.get('/som', routes.textToSpeech);
+
 
 // =====================================
 // WATSON CONVERSATION FOR ANA =========
@@ -74,6 +78,15 @@ app.get('/api/discovery/:texto/:full', function (req, res) {
 app.get('/api/nlu/:texto/:url', function (req, res) {
    nlu.analisar(req, res);
 
+});
+
+app.get('/api/textToSpeech/:texto', function (req, res) {
+   textToSpeech.converter(req, res);
+  // textToSpeech.read(req, res);
+});
+
+app.get('/api/textToSpeechRead', function (req, res) {
+   textToSpeech.read(req, res);
 });
 
 function processChatMessage(req, res) {
