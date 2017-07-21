@@ -16,17 +16,22 @@ var text_to_speech = new TextToSpeechV1({
 var textToSpeechWatson = {
      converter : function(req, res) {
          // Pipe the synthesized text to a file.
-         console.log('Escrevendo audio..'+req.params.texto);
+         console.log('Escrevendo audio..'+req.body.message);
+
          var params = {
-           text: req.params.texto,
+           text: req.body.message,
            voice: 'pt-BR_IsabelaVoice',
            accept: 'audio/wav'
          };
+
 
          text_to_speech.synthesize(params).on('error', function(error) {
            console.log('Error:', error);
          }).pipe(fs.createWriteStream('./wavs/output.wav'));
 
+
+
+       //  writeStream.end();
          res.status(200).json("Sucesso");
 
      },

@@ -80,9 +80,8 @@ app.get('/api/nlu/:texto/:url', function (req, res) {
 
 });
 
-app.get('/api/textToSpeech/:texto', function (req, res) {
+app.post('/api/textToSpeech', function (req, res) {
    textToSpeech.converter(req, res);
-  // textToSpeech.read(req, res);
 });
 
 app.get('/api/textToSpeechRead', function (req, res) {

@@ -137,9 +137,22 @@ function displayMessage(text, user) {
     }
     else {
         bubble.className += " watson";
-        // enviarTextSound(text);
-         //setTimeout(loadSound(), 3000);
-         loadSound();
+         var cond=false;
+         enviarTextSound(text, function(a){
+
+                               if(a){
+                                   var x=0;
+                                   while(x<130000){
+                                    x++;
+                                     console.log(x);
+                                   }
+                                   loadSound();
+                               }
+                             });
+
+
+       //   loadSound() ;
+
     }
     bubble.innerHTML = text;
     chat_body.appendChild(bubble);
