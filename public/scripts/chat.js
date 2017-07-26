@@ -42,6 +42,7 @@ $(document).ready(function () {
             });
         }
     });
+    $("#chatInput").focus();
 });
 
 
@@ -50,9 +51,10 @@ var params = {},
     context;
 
 function userMessage(message) {
+
     params.text = message;
     if (context) {
-        params.context = context;    
+        params.context = context;
     }
     var xhr = new XMLHttpRequest();
     var uri = '/api/watson';
@@ -71,6 +73,8 @@ function userMessage(message) {
                  console.log( 'response'+response );
                  text = value;
                  displayMessage(text, watson);
+                 var chat = document.getElementById('chat_box');
+                 chat.scrollTop = chat.scrollHeight;
 
                },response.intents[0].intent );
 
@@ -113,6 +117,7 @@ function newEvent(event) {
         if (text) {
             // Display the user's text in the chat box and null out input box
             //            userMessage(text);
+            $("#chatInput").css("border-color", "#d2d6de");
             displayMessage(text, 'user');
             userInput.value = '';
             userMessage(text);
@@ -121,31 +126,86 @@ function newEvent(event) {
             // Blank user message. Do nothing.
             console.error("No message.");
             userInput.value = '';
+            $("#chatInput").css("border-color", "red");
             return false;
         }
     }
 }
 
 function displayMessage(text, user) {
-    var chat_body = document.getElementById('chat-body');
-    var bubble = document.createElement('div');
-    bubble.setAttribute("class", "bubble");
+    var chat = document.getElementById('chat_box');
     if (user == "user") {
-        bubble.className += " user";
+         var div = document.createElement('div');
+         var div0 = document.createElement('div');
+
+         var divHora = document.createElement('div');
+         var textHora= document.createTextNode(new Date().getDate()+"/"+(new Date().getMonth()+1)+"  "+new Date().getHours()+":"+addZero(new Date().getMinutes()));
+         divHora.style='text-align:right;color:#a4a4a4;font-size:12px;padding-right:50px';
+         divHora.appendChild(textHora);
+
+         var user = document.createTextNode(' ');
+         var userBox = document.createElement('span');
+         userBox.className = 'direct-chat-name pull-left';
+         div0.className = 'direct-chat-msg right';
+         div.className = 'direct-chat-text';
+         var img = document.createElement('img');
+         img.className = 'direct-chat-img';
+         img.src = 'http://intranet.vbofficeware.com.br/fileserver/imagem/img_usuario.png';
+         div0.appendChild(img);
+         div0.appendChild(div);
+
+         userBox.appendChild(user);
+
+         var message = document.createTextNode(text);
+         var messageBox = document.createElement('p');
+         messageBox.appendChild(userBox);
+         div.appendChild(message);
+         messageBox.appendChild(div0);
+         messageBox.appendChild(divHora);
+         chat.appendChild(messageBox);
     }
     else {
-        bubble.className += " watson";
-         var cond=false;
+        var div = document.createElement('div');
+        var divHora = document.createElement('div');
+        var textHora= document.createTextNode(new Date().getDate()+"/"+(new Date().getMonth()+1)+"  "+new Date().getHours()+":"+addZero(new Date().getMinutes()));
+        divHora.style='text-align:right;color:#a4a4a4;font-size:12px';
+        divHora.appendChild(textHora);
+
+        var user = document.createTextNode(' ');
+        var userBox = document.createElement('span');
+        user = document.createElement('img');
+        user.className = 'direct-chat-img';
+        user.src = 'http://intranet.vbofficeware.com.br/fileserver/imagem/logo-ViaCognitiva_transp.png';
+        div.className = 'direct-chat-text';
+
+        userBox.appendChild(user);
+
+        var message = document.createTextNode(text);
+        var messageBox = document.createElement('p');
+        messageBox.appendChild(userBox);
+        div.appendChild(message);
+        messageBox.appendChild(div);
+        messageBox.appendChild(divHora)
+
+        chat.appendChild(messageBox);
+
+        var textoHTML = $( ".direct-chat-text" ).last().html();
+        $( ".direct-chat-text" ).last().empty();
+        var textoFormat = textoHTML.replace(/&lt;/g,'<').replace(/&gt;/g, '>');
+        $( ".direct-chat-text" ).last().append( textoFormat );
+
          var textoFormatado=text;
          textoFormatado = textoFormatado.replace(/<[^>]*>/g, "");
-        // console.log('Texto Formatado '+textoFormatado);
+                // console.log('Texto Formatado '+textoFormatado);
 
-         loadSound(textoFormatado) ;
+        loadSound(textoFormatado) ;
 
     }
-    bubble.innerHTML = text;
-    chat_body.appendChild(bubble);
-    chat_body.scrollTop = chat_body.scrollHeight;
 }
-
+function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
 userMessage('');
