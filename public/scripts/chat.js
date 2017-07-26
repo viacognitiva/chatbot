@@ -127,8 +127,6 @@ function newEvent(event) {
 }
 
 function displayMessage(text, user) {
-
-
     var chat_body = document.getElementById('chat-body');
     var bubble = document.createElement('div');
     bubble.setAttribute("class", "bubble");
@@ -137,14 +135,17 @@ function displayMessage(text, user) {
     }
     else {
         bubble.className += " watson";
-        // enviarTextSound(text);
-         //setTimeout(loadSound(), 3000);
-         loadSound();
+         var cond=false;
+         var textoFormatado=text;
+         textoFormatado = textoFormatado.replace(/<[^>]*>/g, "");
+        // console.log('Texto Formatado '+textoFormatado);
+
+         loadSound(textoFormatado) ;
+
     }
     bubble.innerHTML = text;
     chat_body.appendChild(bubble);
     chat_body.scrollTop = chat_body.scrollHeight;
 }
-
 
 userMessage('');
