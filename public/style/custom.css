@@ -1,237 +1,97 @@
-@import url(https://fonts.gogleapis.com/css?family=Source+Sans+Pro:400,600);
-html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
-body {
-    background-image: url(../images/viacognitiva.jpg);
+  body {
+    background-image: url(../images/FundoChat.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+  }
+  html, body, #wrapper {
+    margin: 0;
+    padding: 0;
+  }
+  .box-header{
+    background-color:#fff;
+  }
+  .box-header .box-title{
+      color:#3BBAB5;
+  }
+  .box{
+      background-color: rgba(255, 255, 255, 0.22);
+  }
+  .input-group{
+      margin-bottom:15px;
+  }
+  #wrapper {
+    background-color: #ecf0f1;
+  }
+  #chat_box {
+    box-sizing: border-box;
+    height:80%;
+    overflow: auto;
+    padding-bottom: 50px;
+  }
 
-.container {}
-
-.header {
-    height: 10%;
-    color: #fff;
-    text-align: center;
-}
-
-.main {
-    height: 80%;
-    text-align: center;
-    color: #fff;
-}
-
-.footer {
-    height: 10%;
-    text-align: center;
-    color: #fff;
-}
-
-.chat-popup {
-    position: absolute;
-    right: 0;
+  #footer {
+    box-sizing: border-box;
+    position: fixed;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.22);
-    width: 310px;
-    height: 40px;
-    border-top-left-radius: 4px;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    overflow: hidden;
-    animation-name: popup_open;
-    border-width: 1px 1px 0px 1px;
-    border-style: solid;
-    border-color: #e6e6e6;
-}
-
-@keyframes popup_open {
-    from {
-        height: 40px;
-    }
-    to {
-        height: 75%
-    }
-}
-
-@keyframes popup_close {
-    from {
-        height: 75%;
-    }
-    to {
-        height: 40px
-    }
-}
-
-.chat-popup .chat-header {
-    background-color: #e6e6e6;
-    height: 40px;
-    border-top-left-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    height: 50px;
     width: 100%;
-}
+    background-color: #2980b9;
+  }
 
-.chat-popup .chat-body {
-    opacity: 0;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    width: 100%;
-    animation-name: show_chat;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 80%;
-    overflow-y: scroll;
-    padding-top: 10px;
-}
-
-.chat-popup .chat-body::-webkit-scrollbar{
-    visibility: hidden;
-}
-
-@keyframes show_chat {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes hide_chat {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-.chat-popup .chat-body .chat-date{
-    text-align: center;
-    width: 100%;
-    margin-bottom: 10px;
-}
-.chat-popup .chat-body .chat-date span{
-    font-size: 14px;
-    display: inline-block;
-    color: #bebebe;
-    width: 100%;
-}
-
-.chat-popup .chat-body .chat-date span:before, .chat-popup .chat-body .chat-date span:after{
-    display: inline-block;
-    width: 30%;
-    height: 1px;
-    margin-bottom: 5px;
-    content: '';
-    background-color: #c3c3c3;
-}
-.chat-popup .chat-body .chat-date span:before{
-    margin-right: 2px;
-    left: 0;
-}
-.chat-popup .chat-body .chat-date span:after{
-    right: 0;
-    margin-left: 2px;
-}
-
-.chat-popup .chat-body .bubble {
-    padding: 13px 14px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    max-width: 78%;
-    
-}
-
-
-.chat-popup .chat-body .bubble:before {
-    width: 8px;
-    height: 6px;
-    top: 5px;
+  #footer .content {
+    padding-top: 4px;
     position: relative;
-    display: inline-block;
-    content: '\00a0';
-    transform: rotate(29deg) skew(-35deg);
-}
+  }
 
-.chat-popup .chat-body .bubble.watson {
-   // color: #fff;
-   // background-color: #00b0ff;
-    color: #444;
-    background: #d2d6de;
-    align-self: flex-start;
-    margin-left: 20px;
-}
+  #user { width: 20%; }
+  #message { //width: 68%; }
+  #send_btn {
+   // width: 10%;
+    //position: absolute;
+    //right: 0;
+    //bottom: 0;
+    //margin: 0;
+  }
 
-.chat-popup .chat-body .bubble.watson:before {
-    left: -18px;
-    //background-color: #00b0ff;
-    background-color: #d2d6de;
-}
-
-.chat-popup .chat-body .bubble.user:before {
-    right: -18px;
-    float: right;
-    //background-color: #eceff1;
-    background-color: #3c8dbc;
-}
-
-.chat-popup .chat-body .bubble.user {
-    //color: #1a1a1a;
-
-    align-self: flex-end;
-   // background-color: #eceff1;
-    margin-right: 20px;
-    background: #3c8dbc;
-    border-color: #3c8dbc;
-    color: #fff;
-}
-
-
-.chat-footer{
-    opacity: 0;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
+  .content {
     width: 100%;
-    animation-name: show_chat;
-    border: 1px solid #e6e6e6;
-    background-color: #eceff1;
-    font-family: 'Source Sans Pro',sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    height: 32px;
-    display: flex;
-    flex-direction: row;
-}
-.chat-footer input{
-    color: #1a1a1a;
-    border: 0;
-    background-color: #eceff1;
-    padding: 0 10px;
-    outline: none;
-    width: 80%;
-}
+    margin: 0 auto;
+  }
 
-.chat-footer .send-btn{
-    width: 20%;
-    content: 'a';
-    display: inline-block;
-    background-image: url(../images/send.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 32px;
-}
+  #system,
+  .username {
+    color: #aaa;
+    font-style: italic;
+    font-family: monospace;
+    font-size: 16px;
+  }
+  .direct-chat-msg{
+    margin-bottom:0;
+  }
+  @media(max-width: 1000px) {
+    .content { width: 90%; }
+  }
+  @media (min-width: 992px){
+    .col-md-3 {
+      width: 50%;
+      margin: 0 auto;
+      float: none;
+    }
+  }
+  @media(max-width: 780px) {
+    #footer { height: 91px; }
+    #chat_box { padding-bottom: 91px; }
+
+    #user { width: 100%; }
+    #message { width: 80%; }
+  }
+
+  @media(max-width: 400px) {
+    #footer { height: 135px; }
+
+    #message { width: 100%; }
+    #send_btn {
+      position: relative;
+      width: 100%;
+    }
+  }
