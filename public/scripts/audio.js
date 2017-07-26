@@ -1,34 +1,7 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 //var context = new AudioContext();
 
-function process(Data) {
 
-  var context = new AudioContext();
-  console.log(Data.byteLength);
-  source = context.createBufferSource(); // Create Sound Source
-  context.decodeAudioData(Data, function(buffer){
-    source.buffer = buffer;
-
-    if(buffer){
-       source.connect(context.destination);
-       source.start(context.currentTime);
-      console.log(buffer);
-      //callback(buffer);
-    }
-
-  });
-
-
-};
-
-
-function wait(ms){
-   var start = new Date().getTime();
-   var end = start;
-   while(end < start + ms) {
-     end = new Date().getTime();
-  }
-}
 
 function loadSound(texto) {
   var request = new XMLHttpRequest();

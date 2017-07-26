@@ -126,18 +126,7 @@ function newEvent(event) {
     }
 }
 
-
-function wait(ms){
-   var start = new Date().getTime();
-   var end = start;
-   while(end < start + ms) {
-     end = new Date().getTime();
-  }
-}
-
 function displayMessage(text, user) {
-
-
     var chat_body = document.getElementById('chat-body');
     var bubble = document.createElement('div');
     bubble.setAttribute("class", "bubble");
@@ -149,23 +138,14 @@ function displayMessage(text, user) {
          var cond=false;
          var textoFormatado=text;
          textoFormatado = textoFormatado.replace(/<[^>]*>/g, "");
-         console.log('Texto Formatado '+textoFormatado);
+        // console.log('Texto Formatado '+textoFormatado);
 
          loadSound(textoFormatado) ;
-         /*enviarTextSound(textoFormatado, function(a){
-
-                             });*/
-
-
-       //   loadSound() ;
 
     }
     bubble.innerHTML = text;
     chat_body.appendChild(bubble);
     chat_body.scrollTop = chat_body.scrollHeight;
 }
-
-
-
 
 userMessage('');
