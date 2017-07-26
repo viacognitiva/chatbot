@@ -126,6 +126,15 @@ function newEvent(event) {
     }
 }
 
+
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
+
 function displayMessage(text, user) {
 
 
@@ -138,17 +147,14 @@ function displayMessage(text, user) {
     else {
         bubble.className += " watson";
          var cond=false;
-         enviarTextSound(text, function(a){
+         var textoFormatado=text;
+         textoFormatado = textoFormatado.replace(/<[^>]*>/g, "");
+         console.log('Texto Formatado '+textoFormatado);
 
-                               if(a){
-                                   var x=0;
-                                   while(x<130000){
-                                    x++;
-                                     console.log(x);
-                                   }
-                                   loadSound();
-                               }
-                             });
+         loadSound(textoFormatado) ;
+         /*enviarTextSound(textoFormatado, function(a){
+
+                             });*/
 
 
        //   loadSound() ;
@@ -158,6 +164,8 @@ function displayMessage(text, user) {
     chat_body.appendChild(bubble);
     chat_body.scrollTop = chat_body.scrollHeight;
 }
+
+
 
 
 userMessage('');

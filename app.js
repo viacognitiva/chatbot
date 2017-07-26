@@ -80,12 +80,8 @@ app.get('/api/nlu/:texto/:url', function (req, res) {
 
 });
 
-app.post('/api/textToSpeech', function (req, res) {
-   textToSpeech.converter(req, res);
-});
-
-app.get('/api/textToSpeechRead', function (req, res) {
-   textToSpeech.read(req, res);
+app.post('/api/synthesize', (req, res, next) => {
+   textToSpeech.converter(req, res , next);
 });
 
 function processChatMessage(req, res) {
