@@ -14,8 +14,8 @@ var textToSpeechWatson = {
 
             var params = {
                      text:req.body.message,
-                     //voice: 'pt-BR_IsabelaVoice',
-                     voice: 'en-US_AllisonVoice',
+                     voice: 'pt-BR_IsabelaVoice',
+                     //voice: 'en-US_AllisonVoice',
                      accept: 'audio/wav'
              };
 
