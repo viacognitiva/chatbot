@@ -82,8 +82,10 @@ function userMessage(message) {
                for (var txt in text) {
                     displayMessage(text[txt], watson);
                  }
-          }
 
+          }
+          var chat = document.getElementById('chat_box');
+          chat.scrollTop = chat.scrollHeight;
 
         }
         else {
