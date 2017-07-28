@@ -18,6 +18,8 @@ function loadSound(texto) {
        var URLObject = window.webkitURL || window.URL;
        var url = URLObject.createObjectURL(blob);
        audio.setAttribute('src', url);
+       audio.play();
+       console.log('Processou ');
       }
 
   };
