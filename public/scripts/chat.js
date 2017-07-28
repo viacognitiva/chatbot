@@ -211,3 +211,56 @@ function addZero(i) {
         return i;
     }
 userMessage('');
+
+
+
+function enviarImagem() {
+
+  var chat = document.getElementById('chat_box');
+
+  var messageBox = document.createElement('p');
+  var div0 = document.createElement('div');
+  var img = document.createElement('img');
+  img.src = '';
+
+  var canvas = document.createElement('canvas');
+  canvas.style='display:none;';
+
+  var video = document.createElement('video');
+  video.style='height: 200px';
+  video.autoPlay = true;
+
+  div0.appendChild(video);
+  div0.appendChild(img);
+  div0.appendChild(canvas);
+  messageBox.appendChild(div0);
+  chat.appendChild(messageBox);
+
+  capturar();
+}
+
+
+function capturar(){
+
+      var video = document.querySelector('video');
+      var canvas = document.querySelector('canvas');
+      var ctx = canvas.getContext('2d');
+      var localMediaStream = null;
+
+      var onFailSoHard = function(e) {
+          console.log('Reeeejected!', e);
+       };
+
+       if (localMediaStream) {
+          ctx.drawImage(video, 0, 0);
+          // "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.
+          document.querySelector('img').src = canvas.toDataURL('image/webp');
+        }
+
+
+        // Not showing vendor prefixes or code that works cross-browser.
+        navigator.getUserMedia({video: true}, function(stream) {
+          video.src = window.URL.createObjectURL(stream);
+          localMediaStream = stream;
+        }, onFailSoHard);
+}
