@@ -248,7 +248,8 @@ function capturar(){
       var localMediaStream = null;
 
       var onFailSoHard = function(e) {
-          console.log('Reeeejected!', e);
+                 alert('getUserMedia() not supported in your browser.');
+                console.log('Reeeejected!', e);
        };
 
        if (localMediaStream) {
@@ -259,8 +260,20 @@ function capturar(){
 
 
         // Not showing vendor prefixes or code that works cross-browser.
-        navigator.getUserMedia({video: true}, function(stream) {
-          video.src = window.URL.createObjectURL(stream);
-          localMediaStream = stream;
-        }, onFailSoHard);
+        if (navigator.getUserMedia) {
+            navigator.getUserMedia({video: true}, function(stream) {
+              video.src = window.URL.createObjectURL(stream);
+              localMediaStream = stream;
+            }, onFailSoHard);
+        }else if (navigator.webkitGetUserMedia) {
+           navigator.webkitGetUserMedia({video: true}, function(stream) {
+                          video.src = window.webkitURL.createObjectURL(stream);
+                          video.controls = true;
+                          localMediaStream = stream;
+            }, onFailSoHard);
+
+        }else {
+            onFailSoHard({target: video});
+         }
 }
+
