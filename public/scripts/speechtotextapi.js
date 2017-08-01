@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', function () {
           var speech_api = window.SpeechRecognition || window.webkitSpeechRecognition;
           var recebe_audio = new speech_api();
           recebe_audio.continuous = true;
-          recebe_audio.interinResults = true;
+          recebe_audio.interimResults = true;
           recebe_audio.lang = "pt-BR";
 
           recebe_audio.onstart = function(){
@@ -22,6 +22,12 @@ window.addEventListener('DOMContentLoaded', function () {
              esta_gravando = false;
              console.log("Iniciar Gravação ...");
           };
+
+          recebe_audio.onerror = function(event) {
+
+            console.log(" event.error"+ event.error);
+          };
+
 
           recebe_audio.onresult = function(event){
                 console.log("Resultado");
@@ -44,7 +50,7 @@ window.addEventListener('DOMContentLoaded', function () {
           };
 
           btn_gravacao.addEventListener('click',function(e){
-             console.log("click");
+             console.log("click"+esta_gravando);
              if(esta_gravando){
                 recebe_audio.stop();
                 return;
