@@ -275,5 +275,11 @@ function capturar(){
         }else {
             onFailSoHard({target: video});
          }
+
+
+         //video.pause();
+         //localMediaStream.stop(); // Doesn't do anything in Chrome.
+
+
 }
 
