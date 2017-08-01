@@ -19,6 +19,10 @@ var nlu = require('./config/nlu.js');
 
 var textToSpeech = require('./config/text-to-speech.js');
 
+var auth = require('./routes/auth.js');
+
+var validateRequest = require('./config/validateRequest.js');
+
 
 var app = express();
 
@@ -58,6 +62,7 @@ app.get('/nlu', routes.nlu);
 
 app.get('/som', routes.textToSpeech);
 
+app.post('/login', auth.login);
 
 // =====================================
 // WATSON CONVERSATION FOR ANA =========
@@ -77,8 +82,21 @@ app.get('/api/discovery/:texto/:full', function (req, res) {
 
 app.get('/api/nlu/:texto/:url', function (req, res) {
    nlu.analisar(req, res);
-
 });
+
+/*app.get('/api/nlu', function (req, res ) {
+
+  var response = validateRequest.valida(req,res);
+  console.dir(response);
+   console.log("verificar = "+res);
+   console.log(res.status);
+
+   // console.log("verificar = "+next);
+   //nlu.analisar(req, res);
+
+});*/
+
+//app.all('/api/nlu/*', [require('./config/validateRequest.js')]);
 
 app.post('/api/synthesize', (req, res, next) => {
    textToSpeech.converter(req, res , next);
