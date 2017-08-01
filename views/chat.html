@@ -33,6 +33,7 @@
                             <input type="text" id="chatInput" placeholder="O que você gostaria de saber?" onkeypress="return newEvent(event);" class="form-control"/>
                             <span class="input-group-btn"> <input type="button" id="send_btn" value="Enviar" onclick="return newEvent(event);" class="btn btn-primary btn-flat">
                                 <a href="#" onclick="enviarImagem();" class="btn btn-block"><i class="fa fa-camera"></i> Sign</a>
+                                <a href="#" id="idPhone" class="btn btn-block"><i class="fa fa-microphone"></i> Sign</a>
                             </span>
                         </div>
                     </div>
@@ -41,6 +42,7 @@
         </div>
 
         <script src="/scripts/audio.js"></script>
+        <script src="/scripts/speechtotextapi.js"></script>
         <audio autoplay='true' id='audio' class='audio' controls=''  type='audio/ogg;codecs=opus'></audio>
     </body>
 </html>
