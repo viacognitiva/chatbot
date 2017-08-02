@@ -17,14 +17,19 @@ window.addEventListener('DOMContentLoaded', function () {
           recebe_audio.onstart = function(){
              esta_gravando = true;
              console.log("Gravando ...");
+            document.getElementById('iconPhone').className='fa fa-microphone-slash';
+            document.getElementById('iconPhone').textContent="  ouvindo..";
           };
           recebe_audio.onend = function(){
              esta_gravando = false;
              console.log("Iniciar Gravação ...");
+             document.getElementById('iconPhone').className='fa fa-microphone';
+             document.getElementById('iconPhone').textContent="";
           };
 
           recebe_audio.onerror = function(event) {
-
+            document.getElementById('iconPhone').className='fa fa-microphone';
+            document.getElementById('iconPhone').textContent="";
             console.log(" event.error"+ event.error);
           };
 

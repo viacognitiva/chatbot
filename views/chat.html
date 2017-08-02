@@ -31,9 +31,9 @@
                         <div class="input-group">
                             <input type="hidden" id="user" value="Anonimo" placeholder="Who are you?" />
                             <input type="text" id="chatInput" placeholder="O que você gostaria de saber?" onkeypress="return newEvent(event);" class="form-control"/>
-                            <span class="input-group-btn"> <input type="button" id="send_btn" value="Enviar" onclick="return newEvent(event);" class="btn btn-primary btn-flat">
+                            <span class="input-group-btn"> <input type="button" id="send_btn" value="Enviar" onclick="sendMessage();"  class="btn btn-primary btn-flat">
                                 <a href="#" onclick="enviarImagem();" class="btn btn-block"><i class="fa fa-camera"></i> Sign</a>
-                                <a href="#" id="idPhone" class="btn btn-block"><i class="fa fa-microphone"></i> Sign</a>
+                                <a href="#" id="idPhone" class="btn btn-block"><i id="iconPhone" class="fa fa-microphone"></i></a>
                             </span>
                         </div>
                     </div>
