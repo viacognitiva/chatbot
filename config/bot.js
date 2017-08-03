@@ -25,7 +25,7 @@ var conversationWorkspace, conversation;
         url: "https://gateway.watsonplatform.net/conversation/api"
         , username: "d1df6c26-bedc-4965-9a79-e1339c0cff80"
         , password: "3lUqPxo4kNm2"
-        , version_date: '2017-04-10'
+        , version_date: '2017-05-26'
         , version: 'v1'
     });
     // check if the workspace ID is specified in the environment
