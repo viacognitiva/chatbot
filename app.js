@@ -37,7 +37,7 @@ var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);

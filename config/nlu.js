@@ -18,6 +18,7 @@ var natural_language_understanding = new NaturalLanguageUnderstandingV1({
        if(!(req.params.url == "undefined")){
            parameters = {
                    'url': req.params.url,
+                   'language':'en',
                    'features': {
                      'entities': {
                        'emotion': true,
@@ -37,6 +38,7 @@ var natural_language_understanding = new NaturalLanguageUnderstandingV1({
        if(!(req.params.texto == "undefined")){
                 parameters = {
                   'text': req.params.texto,
+                  'language':'pt',
                   'features': {
                     'entities': {
                       'emotion': true,
